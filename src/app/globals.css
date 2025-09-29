@@ -1,42 +1,192 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* Reset básico */
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, sans-serif;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background: #f3f7f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Links */
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Topbar */
+.topbar {
+  background: linear-gradient(90deg, #1976d2, #1565c0);
+  color: white;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.topbar .logo {
+  font-size: 26px;
+  font-weight: bold;
+  margin-left: 60px; /* Espaço para o botão de menu */
+  letter-spacing: 1px;
+}
+
+/* Botão de menu */
+.menu-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  background-color: #1976d2;
+  border: none;
+  color: white;
+  padding: 10px 14px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 1000;
+  transition: background 0.2s;
+}
+
+.menu-btn:hover {
+  background-color: #115293;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #1565c0;
+  color: white;
+  transition: left 0.3s ease;
+  padding-top: 80px;
+  z-index: 90;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.sidebar a:hover {
+  background-color: #0d47a1;
+}
+
+.sidebar a span.icon {
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1; /* Faz a main-content ocupar o espaço disponível */
+  margin-left: 0;
+  padding: 24px;
+  transition: margin-left 0.3s ease;
+}
+
+.main-content.shift {
+  margin-left: 250px;
+}
+
+/* Cards modernos */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* Botões */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2e7d32;
+  color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 12px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: #1b5e20;
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #1976d2, #1565c0);
+  color: white;
+  padding: 40px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  text-align: center;
+}
+
+footer .col {
+  min-width: 220px;
+}
+
+footer h6 {
+  margin-bottom: 8px;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+footer p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .main-content.shift {
+    margin-left: 0;
+  }
+  .sidebar {
+    width: 200px;
+  }
+  .topbar .logo {
+    margin-left: 50px;
+    font-size: 22px;
   }
 }
