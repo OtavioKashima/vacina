@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaHome, FaCalendarCheck, FaSyringe, FaNewspaper } from "react-icons/fa";
+import { FaHome, FaCalendarCheck, FaSyringe, FaInfoCircle } from "react-icons/fa";
 
 export default function Sidebar({ open, onClose }: { open: boolean, onClose: () => void }) {
   return (
@@ -8,7 +8,9 @@ export default function Sidebar({ open, onClose }: { open: boolean, onClose: () 
       <Link href="/" onClick={onClose}><span className="icon"><FaHome /></span>Início</Link>
       <Link href="/calendario" onClick={onClose}><span className="icon"><FaCalendarCheck /></span>Calendário</Link>
       <Link href="/vacinas" onClick={onClose}><span className="icon"><FaSyringe /></span>Vacinas</Link>
-      <Link href="/noticias" onClick={onClose}><span className="icon"><FaNewspaper /></span>Notícias</Link>
+      <Link href="/informativo" onClick={onClose}>
+  <span className="icon"><FaInfoCircle /></span> Informativo
+</Link>
     </div>
   );
 }

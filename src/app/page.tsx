@@ -1,5 +1,6 @@
 "use client";
-import { FaSyringe, FaCalendarCheck, FaHeartbeat } from "react-icons/fa";
+import Link from "next/link";
+import { FaSyringe, FaCalendarCheck, FaInfoCircle } from "react-icons/fa";
 
 export default function HomePage() {
   return (
@@ -11,22 +12,27 @@ export default function HomePage() {
       </div>
 
       {/* Cards de destaque */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        <div className="card" style={{ flex: "1 1 300px", textAlign: "center" }}>
-          <FaSyringe size={40} color="#1976d2" style={{ marginBottom: "12px" }} />
-          <h3>Vacinas Disponíveis</h3>
-          <p>Confira a lista de vacinas aplicadas no posto de saúde da sua região.</p>
-        </div>
-        <div className="card" style={{ flex: "1 1 300px", textAlign: "center" }}>
-          <FaCalendarCheck size={40} color="#1976d2" style={{ marginBottom: "12px" }} />
-          <h3>Calendário de Vacinação</h3>
-          <p>Fique atento às datas de campanhas e mutirões em sua cidade.</p>
-        </div>
-        <div className="card" style={{ flex: "1 1 300px", textAlign: "center" }}>
-          <FaHeartbeat size={40} color="#1976d2" style={{ marginBottom: "12px" }} />
-          <h3>Dicas de Saúde</h3>
-          <p>Informações confiáveis para manter você e sua família protegidos.</p>
-        </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", justifyContent: "center" }}>
+        {/* Card Vacinas */}
+        <Link href="/vacinas" className="card" style={{ flex: "1 1 280px", maxWidth: "300px", textAlign: "center", cursor: "pointer" }}>
+          <FaSyringe size={60} color="#1976d2" style={{ marginBottom: "12px" }} />
+          <h3>Vacinas</h3>
+          <p>Veja as vacinas disponíveis e saiba mais sobre cada uma.</p>
+        </Link>
+
+        {/* Card Calendário */}
+        <Link href="/calendario" className="card" style={{ flex: "1 1 280px", maxWidth: "300px", textAlign: "center", cursor: "pointer" }}>
+          <FaCalendarCheck size={60} color="#2e7d32" style={{ marginBottom: "12px" }} />
+          <h3>Calendário</h3>
+          <p>Confira as datas e campanhas de vacinação do ano.</p>
+        </Link>
+
+        {/* Card Informativo */}
+        <Link href="/informativo" className="card" style={{ flex: "1 1 280px", maxWidth: "300px", textAlign: "center", cursor: "pointer" }}>
+          <FaInfoCircle size={60} color="#d32f2f" style={{ marginBottom: "12px" }} />
+          <h3>Informativo</h3>
+          <p>Entenda o que são as vacinas, sua composição e importância.</p>
+        </Link>
       </div>
     </div>
   );
